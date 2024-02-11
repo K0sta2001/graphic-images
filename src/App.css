@@ -1,0 +1,71 @@
+.App {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  min-height: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+.graphic {
+  width: 150px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#vector0 {
+  left: 45%;
+  position: absolute;
+  transition: left 1s ease;
+}
+#vector1 {
+  position: absolute;
+  right: -34vw;
+  transition: right 2s ease;
+}
+
+@keyframes vectorAnimation {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.coloring-text {
+  background: linear-gradient(
+    to right,
+    black 30%,
+    rgba(255, 96, 0, 0.21) -12.93%,
+    #ffc9a8 6.24%,
+    rgba(255, 96, 0, 0.8) 19.42%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  background-size: 500% auto;
+  animation: textShine 5s ease-in-out infinite alternate;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+@keyframes textShine {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
