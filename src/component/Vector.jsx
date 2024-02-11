@@ -14,7 +14,7 @@ export default function GraphicAnimation({ vectors, label, id }) {
     switch (e.currentTarget.id) {
       case "vector0":
         document.getElementById("vector0").style.left = "10%";
-        document.getElementById("vector1").style.right = "40%"; // Adjust the value as needed
+        document.getElementById("vector1").style.right = "40%"; 
         break;
       default:
         break;
