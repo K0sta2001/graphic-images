@@ -18,15 +18,27 @@ export default function DisplayGraphic({ vectorArr, recurseGraphicComponent }) {
     setVectorObjState(vectorArr);
   }, [vectorArr]);
 
+  //
+  const [opacity, setOpacity] = useState(1);
+
+  const handleClick = () => {
+    recurseGraphicComponent(vectorObjState);
+    setOpacity(opacity === 1 ? 0.6 : 1);
+  };
+
   return (
     <>
       {vectors?.map((vectorObj) => (
         <div
-          key={vectorObj.label}
+          key={vectorObj?.label}
           className="vector-div"
-          onClick={(e) => recurseGraphicComponent(e, vectorObjState)}
+          onClick={() => {
+            recurseGraphicComponent(vectorObjState);
+            handleClick();
+          }}
+          style={{ opacity: opacity }}
         >
-          {vectorObj.vectors.map((svg, svgIndex) => (
+          {vectorObj?.vectors?.map((svg, svgIndex) => (
             <div
               key={svgIndex}
               style={{ marginBottom: "10px", position: "absolute" }}

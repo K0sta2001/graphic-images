@@ -5,15 +5,17 @@ import DisplayGraphic from "./component/Vector.jsx";
 import { useState } from "react";
 
 function App() {
-  const [vectorObj, setVectorObj] = useState(null);
-
-  console.log(vectorObj);
-  const graphicChildrenRender = (e) => {
-    if (e.currentTarget.style.opacity < 1) {
-      e.currentTarget.style.opacity = 1;
-    } else {
-      e.currentTarget.style.opacity = 0;
-    }
+  const graphicChildrenRender = (v) => {
+    return (
+      <DisplayGraphic
+        vectorArr={v?.children}
+        recurseGraphicComponent={(v) => {
+          setTimeout(() => {
+            graphicChildrenRender(v);
+          }, 400);
+        }}
+      />
+    );
   };
 
   return (
@@ -21,13 +23,13 @@ function App() {
       <div className="animation-container">
         <DisplayGraphic
           vectorArr={vectorsObj}
-          recurseGraphicComponent={(e, v) => {
-            setVectorObj(v);
+          recurseGraphicComponent={(v) => {
             setTimeout(() => {
-              graphicChildrenRender(e);
+              graphicChildrenRender(v);
             }, 400);
           }}
         />
+        {graphicChildrenRender()}
       </div>
       <footer></footer>
     </div>
