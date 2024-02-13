@@ -4,7 +4,7 @@ export default function DisplayGraphic({ vectorArr, recurseGraphicComponent }) {
   useEffect(() => {
     const vectorSVGs = document.querySelectorAll(".vector-svg");
     vectorSVGs.forEach((svg) => {
-      const randomDuration = Math.random() * 10 + 1;
+      const randomDuration = Math.random() * 2 + 2;
       const randomDelay = Math.random() * 0.5;
 
       svg.style.animation = `vectorAnimation ${randomDuration}s ease-in-out ${randomDelay}s infinite alternate`;

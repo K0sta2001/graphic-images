@@ -2,17 +2,16 @@ import React from "react";
 import "./App.css";
 import vectorsObj from "./assets/vectors.js";
 import DisplayGraphic from "./component/Vector.jsx";
-import { useState } from "react";
 
 function App() {
-  const graphicChildrenRender = (v) => {
+  const GraphicChildrenRender = ({ v }) => {
+    console.log("GraphicChildrenRender", v);
     return (
       <DisplayGraphic
-        vectorArr={v?.children}
-        recurseGraphicComponent={(v) => {
-          setTimeout(() => {
-            graphicChildrenRender(v);
-          }, 400);
+        vectorArr={v.children}
+        recurseGraphicComponent={(childV) => {
+          console.log("Recursive Call", childV);
+          return <GraphicChildrenRender v={childV} />;
         }}
       />
     );
@@ -24,12 +23,10 @@ function App() {
         <DisplayGraphic
           vectorArr={vectorsObj}
           recurseGraphicComponent={(v) => {
-            setTimeout(() => {
-              graphicChildrenRender(v);
-            }, 400);
+            console.log("Initial Call", v);
+            return <GraphicChildrenRender v={v} />;
           }}
         />
-        {graphicChildrenRender()}
       </div>
       <footer></footer>
     </div>
